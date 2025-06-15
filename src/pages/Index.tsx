@@ -8,6 +8,7 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  // Featured Posts Data - In WordPress, this will come from get_posts() with meta_query for featured
   const featuredPosts = [
     {
       title: "iPhone 16 Pro Max: Review completo do novo flagship da Apple",
@@ -33,6 +34,7 @@ const Index = () => {
     }
   ];
 
+  // Category Posts Data - In WordPress, this will come from get_posts() with category queries
   const cellphoneNews = [
     {
       title: "Samsung Galaxy S24 Ultra vs iPhone 15 Pro Max: batalha dos titãs",
@@ -79,62 +81,71 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* WordPress Template: header.php */}
       <Header />
       
-      {/* Top Leaderboard Ad */}
-      <div className="container mx-auto px-4 py-4">
+      {/* Top Leaderboard Ad - WordPress: get_option('adsense_header') */}
+      <div className="container mx-auto px-4 py-6">
         <AdBanner type="leaderboard" />
       </div>
 
+      {/* Main Content Area - WordPress Template: index.php */}
       <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Featured Stories */}
-            <section>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          
+          {/* Main Content - WordPress: Primary Content Area */}
+          <div className="lg:col-span-2 space-y-12">
+            
+            {/* Featured Stories Section - WordPress: Featured Posts Query */}
+            <section className="mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {featuredPosts.map((post, index) => (
                   <FeaturedPost key={index} {...post} />
                 ))}
               </div>
             </section>
 
-            {/* Mid-content Ad */}
-            <AdBanner type="leaderboard" />
+            {/* Mid-content Ad - WordPress: get_option('adsense_content') */}
+            <div className="my-12">
+              <AdBanner type="leaderboard" />
+            </div>
 
-            {/* Celulares Section */}
+            {/* Celulares Section - WordPress: Category Query (Celulares) */}
             <CategorySection 
               title="📱 Celulares & Smartphones" 
               subtitle="Últimas novidades, reviews e comparativos"
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {cellphoneNews.map((post, index) => (
                   <NewsCard key={index} {...post} />
                 ))}
               </div>
             </CategorySection>
 
-            {/* Apps Section */}
+            {/* Apps Section - WordPress: Category Query (Apps) */}
             <CategorySection 
               title="📲 Apps & Plataformas" 
               subtitle="Novidades, updates e dicas dos seus apps favoritos"
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {appNews.map((post, index) => (
                   <NewsCard key={index} {...post} />
                 ))}
               </div>
             </CategorySection>
 
-            {/* Bottom Ad */}
-            <AdBanner type="leaderboard" />
+            {/* Bottom Ad - WordPress: get_option('adsense_footer') */}
+            <div className="mt-12">
+              <AdBanner type="leaderboard" />
+            </div>
           </div>
 
-          {/* Sidebar */}
+          {/* Sidebar - WordPress Template: sidebar.php */}
           <Sidebar />
         </div>
       </main>
 
+      {/* WordPress Template: footer.php */}
       <Footer />
     </div>
   );
