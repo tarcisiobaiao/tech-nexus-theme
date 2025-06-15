@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -84,13 +85,74 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-in': 'slide-in 0.3s ease-out'
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						maxWidth: 'none',
+						color: 'hsl(var(--foreground))',
+						'[class~="lead"]': {
+							color: 'hsl(var(--muted-foreground))',
+						},
+						a: {
+							color: '#ea580c',
+							textDecoration: 'underline',
+							fontWeight: '500',
+						},
+						strong: {
+							color: 'hsl(var(--foreground))',
+							fontWeight: '600',
+						},
+						'ol[type="A"]': {
+							'--list-counter-style': 'upper-alpha',
+						},
+						'ol[type="a"]': {
+							'--list-counter-style': 'lower-alpha',
+						},
+						'ol[type="A" s]': {
+							'--list-counter-style': 'upper-alpha',
+						},
+						'ol[type="a" s]': {
+							'--list-counter-style': 'lower-alpha',
+						},
+						'ol[type="I"]': {
+							'--list-counter-style': 'upper-roman',
+						},
+						'ol[type="i"]': {
+							'--list-counter-style': 'lower-roman',
+						},
+						'ol[type="I" s]': {
+							'--list-counter-style': 'upper-roman',
+						},
+						'ol[type="i" s]': {
+							'--list-counter-style': 'lower-roman',
+						},
+						'ol[type="1"]': {
+							'--list-counter-style': 'decimal',
+						},
+					},
+				},
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/line-clamp')
+	],
 } satisfies Config;
