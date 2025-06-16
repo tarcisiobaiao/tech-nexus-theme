@@ -28,7 +28,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/ab13f0fa-a033-420e-ad4e-992bccdb6e29.png" 
               alt="TechSOS by JSay Designs" 
-              className="h-12 md:h-16 w-auto"
+              className="h-16 md:h-20 w-auto"
             />
           </div>
 
