@@ -25,9 +25,11 @@ const Header = () => {
         <div className="flex items-center justify-between py-6">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Tech<span className="text-orange-600">Nexus</span>
-            </h1>
+            <img 
+              src="/lovable-uploads/ab13f0fa-a033-420e-ad4e-992bccdb6e29.png" 
+              alt="TechSOS by JSay Designs" 
+              className="h-12 md:h-16 w-auto"
+            />
           </div>
 
           {/* Search Bar - Desktop */}
@@ -54,7 +56,7 @@ const Header = () => {
         {/* Navigation Menu */}
         <nav className={`${isMenuOpen ? 'block' : 'hidden'} md:block pb-4 md:pb-6`}>
           <ul className="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-8 text-sm font-medium">
-            <li><a href="#" className="text-orange-600 border-b-2 border-orange-600 pb-3 block">Início</a></li>
+            <li><a href="/" className="text-orange-600 border-b-2 border-orange-600 pb-3 block">Início</a></li>
             <li><a href="#" className="text-gray-700 hover:text-orange-600 transition-colors pb-3 block">Celulares</a></li>
             <li><a href="#" className="text-gray-700 hover:text-orange-600 transition-colors pb-3 block">Apps</a></li>
             <li><a href="#" className="text-gray-700 hover:text-orange-600 transition-colors pb-3 block">Tutoriais</a></li>
